@@ -1,0 +1,38 @@
+tc 3.1 Set contribution for existing user:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key_28732'
+    contribution_amount: 130.50
+  expected-status-code: 200
+  expected-response:
+    status: 'success'
+    contribution_amount: 130.50
+  schema: setContributionValid
+
+tc 3.2 Set contribution for new user:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key_3423'
+    contribution_amount: 98.20
+  expected-status-code: 200
+  expected-response:
+    status: 'success'
+    contribution_amount: 98.20
+  schema: setContributionValid
+
+tc 3.3 Set contribution for existing user2:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key_34'
+    contribution_amount: 174
+  expected-status-code: 200
+  expected-response:
+    status: 'success'
+    contribution_amount: 98.20
+  schema: setContributionValid

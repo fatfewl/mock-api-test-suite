@@ -1,0 +1,90 @@
+tc 4.1 Set contribution for existing user with non-numeric value:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key43254'
+    contribution_amount: 'fourhundred pounds'
+  expected-status-code: 400
+  expected-response:
+    status: 'failure'
+    error: 'Invalid contribution value'
+  schema: setContributionValue_InvalidValue
+
+tc 4.2 Set contribution for existing user using blank value:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key65464'
+    contribution_amount: ''
+  expected-status-code: 400
+  expected-response:
+    status: 'failure'
+    error: 'Invalid contribution value'
+  schema: setContributionValue_InvalidValue
+
+tc 4.3 Set contribution with invalid apikey:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'invalid_api_key4234'
+    contribution_amount: 240
+  expected-status-code: 401
+  expected-response:
+    status: 'failure'
+    error: 'Authentication Failed: Invalid API Key'
+  schema: setContributionValue_InvalidValue
+
+tc 4.3 Set contribution for existing user where value is greater than salary:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key69843'
+    contribution_amount: 3400
+  expected-status-code: 400
+  expected-response:
+    status: 'failure'
+    error: 'Contribution value exceeds the maximum allowed amount'
+  schema: setContributionValue_InvalidValue
+
+tc 4.4 Set contribution for existing user where value is negative:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key69843'
+    contribution_amount: -134
+  expected-status-code: 400
+  expected-response:
+    status: 'failure'
+    error: 'Invalid contribution value'
+  schema: setContributionValue_InvalidValue
+
+tc 4.5 Set contribution for existing user where value is negative zero:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key69033'
+    contribution_amount: -0
+  expected-status-code: 400
+  expected-response:
+    status: 'failure'
+    error: 'Invalid contribution value'
+  schema: setContributionValue_InvalidValue
+
+tc 4.6 Set contribution for existing user where value is string of numbers:
+  endpoint: "/set_contribution"
+  method: "post"
+  headers: ""
+  payload:
+    apiKey: 'another_very_secure_api_key69033'
+    contribution_amount: '123'
+  expected-status-code: 400
+  expected-response:
+    status: 'failure'
+    error: 'Invalid contribution value'
+  schema: setContributionValue_InvalidValue

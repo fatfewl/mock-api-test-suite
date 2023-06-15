@@ -1,0 +1,11 @@
+tc 2.1 Get contribution with invalid apikey:
+  endpoint: "/get_contribution"
+  method: "get"
+  headers: ""
+  payload:
+    apiKey: 'mock_invalid_api_key'
+  expected-status-code: 401
+  expected-response:
+    status: 'failure'
+    error: 'Authentication Failed: Invalid API Key'
+  schema: getContributionInvalid
